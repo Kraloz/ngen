@@ -1,0 +1,22 @@
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Fecha enicio</th>
+        <th scope="col">Fecha estimada</th>
+        <th scope="col">Planta</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(c, index) in cultivos" :key="index">
+        <th scope="row">#[[c.id]]</th>
+        <td>[[c.fecha_inicio]]</td>
+        <td>[[c.fecha_estimada]]</td>
+        <td>[[c.planta]]</td>
+        <td class="table_actions">
+            <button @click.prevent=deleteCultivo(c.id) type="button" class="btn btn-danger"><span class="fas fa-minus-circle"></span></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>

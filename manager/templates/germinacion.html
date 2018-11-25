@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Fecha enicio</th>
+        <th scope="col">Fecha estimada</th>
+        <th scope="col">Planta</th>
+        <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="(g, index) in germinaciones" :key="index">
+      <th scope="row">#[[g.id]]</th>
+      <td>[[g.fecha_inicio]]</td>
+      <td>[[g.fecha_estimada]]</td>
+      <td :id="g.id">[[g.planta]]</td>
+      <td class="table_actions">
+          <button @click.prevent=deleteGerminacion(g.id) type="button" class="btn btn-danger"><span class="fas fa-minus-circle"></span></button>
+        </td>
+    </tr>
+  </tbody>
+</table>

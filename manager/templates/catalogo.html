@@ -1,0 +1,65 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Catalogo de plantitas{% endblock title %}
+
+{% block content %}
+<div role="main" class="container">
+    <div id="app">
+      {% include 'loader.html' %}
+      <!-- use the modal component, pass in the prop -->
+      <template v-if="!(plantas === undefined || plantas.length == 0)">
+      <modal :current-planta="currentPlanta" v-if="showModal">
+        <div slot="header">
+          Nueva planta
+        </div>
+        <div slot="footer">
+          <button class="modal-default-button" @click="closeModal">
+            Guardar
+          </button>
+        </div>
+      </modal>
+      <div class="row">
+        <h2>Catálogo</h2>
+      </div>
+        <div class="row">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Germinación(Días)</th>
+                  <th scope="col">Recolección</th>
+                  <th scope="col">Riego</th>
+                  <th scope="col">Capacidad maceta (Litros)</th>
+                  <th scope="col">Extra</th>
+                  <th scope="col">Acción</th>
+                  <th scope="col">Plantar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(planta, index) in plantas" :key="index">
+                  <th scope="row">#[[planta.id]]</th>
+                  <td>[[planta.nombre]]</td>
+                  <td>[[planta.dias_germinacion]]</td>
+                  <td>[[planta.etapa_recoleccion]]</td>
+                  <td>[[planta.riego]]</td>
+                  <td>[[planta.maceta_litros]]</td>
+                  <td>[[planta.extra]]</td>
+                  <td class="table_actions">
+                      <button @click.prevent="getPlanta(planta.id)" type="button" class="btn btn-primary"><span class="fas fa-edit"></span></button>
+                      <button @click.prevent=deletePlanta(planta.id) type="button" class="btn btn-danger"><span class="fas fa-minus-circle"></span></button>
+                    </td>
+                    <td class="table_add">
+                      <button type="button" class="btn btn-success"><span class="fas fa-leaf"></span></button>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
+{% block scripts%}
+  <script src="{% static 'js/catalogo.js' %}" ></script>
+{% endblock scripts %}

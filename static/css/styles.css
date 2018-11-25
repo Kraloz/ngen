@@ -1,0 +1,24 @@
+.table_actions{
+  white-space: nowrap;
+}
+.table_add{
+  text-align: center;
+}
+
+td:first-letter { 
+    text-transform:capitalize;
+}
+
+.btn-block {
+  padding: 50% 0; 
+  /* define values in pixels / Percentage or em. whatever suits 
+     your requirements */
+}
+
+.content{
+  margin-top: 40px;
+}
+
+a {
+  color: inherit; 
+}

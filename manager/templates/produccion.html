@@ -1,0 +1,24 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Ngen-Pacha{% endblock title %}
+
+{% block content%}
+<div class="container">
+  <div id="app">
+    {% include 'loader.html' %}
+    <div class="row"><h2>Germinaciones</h2></div>
+    <template v-if="!(germinaciones === undefined)">
+      <div class="row">{% include 'germinacion.html' %}</div>
+    </template>
+    <br>
+    <div class="row"><h2>Cultivos</h2></div>
+    <template v-if="!(cultivos === undefined)">
+      <div class="row">{% include 'cultivo.html' %}</div>
+    </template>
+  </div>
+</div>
+{% endblock content%}
+
+{% block scripts %}
+<script src="{% static 'js/produccion.js' %}" ></script>
+{% endblock scripts %}
